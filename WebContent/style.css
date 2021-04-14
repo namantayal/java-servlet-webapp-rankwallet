@@ -7,7 +7,19 @@ body{
 	height:100%;
 }
 .image{
+	display:flex;
 	margin-top:30px;
+	width:90%;
+	height: 90%;
+	align-items: center;
+  justify-content:center;
+  
+}
+
+img{
+	width: 750px;
+	height:800px;
+	size: 40px;
 }
 
 .first {
@@ -36,7 +48,6 @@ body{
 
 .title{
 	color: #3C40C6;
-  
   font-family: Arial, Helvetica, sans-serif;
   font-size: 40px;
   
@@ -48,10 +59,10 @@ body{
 	flex-direction: column;
 	width:80%;
 	height:80%;
-	border:solid black 2px;
-	margin-top:15%;
+	margin-top:10%;
 	padding-bottom: 20px;
-	border-radius:10px;
+	margin-left: auto;
+	margin-right: 100px;
 }
 
 
@@ -79,13 +90,24 @@ body{
 }
 
  .login-input{
-	height:4vh;
-	padding:5px;
+	height:5vh;
+	padding:5px 20px;
 	width:30%;
 	border-radius:12px;
 	border-color:#38ACEC;
 	border-width:5px;
+	border:solid;
+	background-color:white;
+	color:#38ACEC;
+	outline:none;
+	font-size: 16px;
+	 
 } 
+.login-input:focus{
+	border:solid;
+	font-size:22px;
+	border-width:3px;
+}
 
 
 .login-button{
@@ -99,13 +121,35 @@ body{
 	justify-content:center;
 	font-weight:bold;
 	font-size:18px;
-	border-width:4px
+	outline:none;
+	border-color: white;
+	
+}
+
+.firstinput{
+	display:flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+	
+}
+.signup-bar{
+	display: flex;
+ margin-left:45px;
+  margin-top:40px;
+  align-items: center;
+  justify-content:center;
+  width:90%;
+  border: solid blue 2px;
+  border-radius: 10px;
+  height: 70px;
+  border-width:3px;
 }
 
 .signup-form{
 	display: flex;
 	width:100%;
-	padding-left: 27px;
+	padding-left: 10px;
 	padding-top:35px;
 	align-items: center;
 	justify-content:center;
@@ -116,14 +160,42 @@ body{
 	
 	height:6vh;
 	margin-bottom: 55px;
-	width:90%;
-	border-radius:15px;
+	width:95%;
+	border-radius: 10px;
 	padding-left: 15px;
 	padding-right: 10px;
 	font-size:18px;
 	font-weight: bold;
 	color: black;
-	
+	outline:none;
+	font-size:18px;
+}
+.signup-input:focus{
+	border:solid;
+	font-size:20px;
+	border-width:3px;
+	border-color:#38ACEC;
+}
+
+.signup-input1:focus{
+	border:solid;
+	font-size:22px;
+	border-width:3px;
+	border-color:#38ACEC;
+}
+
+.signup-input1{
+	height:6vh;
+	margin-bottom: 55px;
+	width:45%;
+	border-radius: 10px;
+	padding-left: 15px;
+	padding-right: 10px;
+	font-size:18px;
+	font-weight: bold;
+	color: black;
+	outline:none;
+
 }
 
 .signup-button{
@@ -131,13 +203,14 @@ body{
 	height:6vh;
 	width:30%;
   	color: white;
-	background-color: #38ACEC;
-  	border-radius: 20px;
+	background-color: #0080ff;
+  	border-radius: 10px;
   	align-items:center;
   	justify-content: center;
-  	margin-left: 30%;
+  	margin-left: 35%;
   	font-weight:bold;
   	font-size:18px;
+  	
   	
   	
 }
