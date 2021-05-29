@@ -26,20 +26,37 @@
 <head>
 <meta charset="ISO-8859-1">
 	<title>Send Money</title>
-	<link rel="stylesheet" type="text/css" href="/RankWallet/style.css?version=14">
+	<link rel="stylesheet" type="text/css" href="/RankWallet/sendmoney.css?version=40">
 </head>
 <body>
-	<nav class="nav-bar">
-		<h2 class="title">Rank Wallet</h2>
-		<form action="logout.jsp" method="post" class="logout-form">
-			<input class="logout-button" type="submit" value="Logout">
+	<div class = "navBar">
+
+		<h2 class="Heading">Rank Wallet</h2>
+		<div class="buttonsDiv">
+		<button class="text" onclick="window.location.href='addMoney.jsp'">Add Money</button>
+		<button class="button" onclick="window.location.href='sendMoney.jsp'">Send Money</button>
+		<button class="text" onclick="window.location.href='transactions.jsp'">Statement</button>
+		<button class="text" onclick="window.location.href='delete.jsp'">Delete</button>
+		</div>
+		<form action="logout.jsp" method="post" class="logOut" >
+			<input class="logbut" type="submit" value="Logout">
 		</form>
-	</nav>
-	<h3 class="func-title">Send Money</h3>
-	<form action="sendMoneyAction.jsp" method="post">
-		<input type="number" min=0 name="sendphone" placeholder="Send Money to" pattern="[0-9]{10}" class="amount">
-		<input type="number" min=0 name="amount" placeholder="Amount" class="amount">
-		<input type="submit" value="Send Money" class="addButton">
+	
+</div>
+<div class="container">
+<div class="formContainer">
+	<p class="sendMoney">Send Money</p>
+	<div class="line"></div>
+	<form action="sendMoneyAction.jsp" method="post" class="form">
+		<p class="headText">Account Holder Name</p>
+		<input type="number" min=0 name="sendphone" placeholder="Send Money to" pattern="[0-9]{10}" class="inputBox">
+		
+		<p class="headText">Amount To Send</p>
+		<input type="number" min=0 name="amount" placeholder="Amount" class="inputBox" >
+		<div class="lines"></div>
+		<input type="submit" value="Send Money" class="sendButton">
 	</form>
+	</div>
+</div>
 </body>
 </html>

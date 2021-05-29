@@ -1,0 +1,68 @@
+body{	
+	margin:0;
+	display:flex;
+	flex-direction:column;
+	width:100%;
+	height:100%;
+}
+
+.navBar{
+	display: flex;
+	flex-direction:row;
+	align-items: center;
+ background-color:white;
+	width: 98.5%;
+	
+	padding:0px 15px;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 7px 0 rgba(0, 0, 0, 0.19);
+	
+}
+
+.buttonsDiv{
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	justify-content:space-between;
+	margin-left:100px;
+	width:31%;
+	padding:0px 5px
+}
+
+
+.button{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	background-color:#3bb9ff;
+	color:white;
+	font-size:20px;
+	width:150px;
+	padding:18px 0px;
+	border:solid 1px;
+	outline:none
+}
+.logOut{
+	display:flex;
+	margin-left:auto;
+}
+
+.logbut{
+	background-color:red;
+	
+	padding:10px 20px;
+	border:solid 1px;
+	outline:none;
+	color:white;
+	font-size:24px;
+}
+
+
+.Heading{
+	display:flex;
+	font-size:32px;
+	font-weight:bold;
+	color:black;
+}
+.two{
+	
+}

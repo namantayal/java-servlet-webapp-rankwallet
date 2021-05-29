@@ -26,27 +26,35 @@
 <head>
 <meta charset="ISO-8859-1">
 	<title>Rank Wallet</title>
-	<link rel="stylesheet" type="text/css" href="/RankWallet/style.css?version=11">
+	<link rel="stylesheet" type="text/css" href="/RankWallet/welcome.css?version=60">
 </head>
 <body>
-	<nav class="nav-bar">
-		<h2 class="title">Rank Wallet</h2>
-		<form action="logout.jsp" method="post" class="logout-form">
-			<input class="logout-button" type="submit" value="Logout">
+<div class = "navBar">
+
+		<h2 class="Heading">Rank Wallet</h2>
+		<div class="buttonsDiv">
+		<button class="button" onclick="window.location.href='addMoney.jsp'">Add Money</button>
+		<button class="button" onclick="window.location.href='sendMoney.jsp'">Send Money</button>
+		<button class="button" onclick="window.location.href='transactions.jsp'">Statement</button>
+		<button class="button" onclick="window.location.href='delete.jsp'">Delete</button>
+		</div>
+		<form action="logout.jsp" method="post" class="logOut" >
+			<input class="logbut" type="submit" value="Logout">
 		</form>
-	</nav>
-	<div class="info">
+	
+
+</div>
+<%-- <div class = "two">
+	<div class="">
 		<p> Hi, <%out.println(Customer.getInfo(phone,"Name"));%></p>
 		<div class="bal-display">
-			<p class="bal-head">Current Balance</p>
-			<p class="bal-value"><%out.println(Customer.getInfo(phone,"Bal"));%></p>
+			<p class="">Current Balance</p>
+			<p class=""><%out.println(Customer.getInfo(phone,"Bal"));%></p>
 		</div>
 	</div>	
-	<div class="menu">
-		<button onclick="window.location.href='addMoney.jsp'">Add Money</button>
-		<button onclick="window.location.href='sendMoney.jsp'">Send Money</button>
-		<button onclick="window.location.href='transactions.jsp'">Statement</button>
-		<button onclick="window.location.href='delete.jsp'">Delete</button>
-	</div>
+	
+		
+	
+	</div> --%>
 </body>
 </html>
