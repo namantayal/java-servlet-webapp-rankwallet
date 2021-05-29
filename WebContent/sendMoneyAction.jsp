@@ -1,4 +1,6 @@
 <%@page import="rankwallet.Customer"%>
+<%@ page import="java.util.UUID" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%!
@@ -8,7 +10,7 @@
 	HttpSession loginSession=request.getSession();
 	if(loginSession.getAttribute("login")==null){
 		loginSession.setAttribute("login", false);
-		response.sendRedirect("/RankWallet/welcome.jsp");
+		response.sendRedirect("/RankWallet/index.jsp");
 	}
 	else{
 		boolean status = (boolean)loginSession.getAttribute("login");
@@ -30,12 +32,14 @@
 <%
 	String sendPhone=request.getParameter("sendphone").toString();
 	String amount=request.getParameter("amount").toString();
+	UUID uuid=UUID.randomUUID();
 	if(!Customer.checkExist(sendPhone)){
 		out.println("Destination Wallet Not Exists!!");
 	}
 	else{
-		if(Customer.sendBalance(phone, amount)){
-			Customer.addBalance(sendPhone, amount);
+		
+		if(Customer.sendBalance(phone, amount,uuid,sendPhone)){
+			Customer.addBalance(sendPhone, amount, uuid, phone);
 			out.println("Transaction Successful!!");
 		}
 	}

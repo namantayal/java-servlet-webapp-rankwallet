@@ -9,7 +9,7 @@
 	HttpSession loginSession=request.getSession();
 	if(loginSession.getAttribute("login")==null){
 		loginSession.setAttribute("login", false);
-		response.sendRedirect("/RankWallet/welcome.jsp");
+		response.sendRedirect("/RankWallet/index.jsp");
 	}
 	else{
 		boolean status = (boolean)loginSession.getAttribute("login");
@@ -42,8 +42,11 @@
 	<table>
 		<tr>
 			<th>S.No.</th>
+			<th>Transaction ID</th>
 			<th>Mode</th>
+			<th>Received from/ Sent to</th>
 			<th>Amount</th>
+			<th>Transaction Time</th>
 		</tr>
 		<%
 			ResultSet rs= Customer.transaction(phone);
@@ -53,10 +56,19 @@
 				out.println(rs.getString("Id"));
 				out.println("</td>");
 				out.println("<td>");
+				out.println(rs.getString("T_ID"));
+				out.println("</td>");
+				out.println("<td>");
 				out.println(rs.getString("Mode"));
 				out.println("</td>");
 				out.println("<td>");
+				out.println(rs.getString("sendphone"));
+				out.println("</td>");
+				out.println("<td>");
 				out.println(rs.getString("Amount"));
+				out.println("</td>");
+				out.println("<td>");
+				out.println(rs.getString("time"));
 				out.println("</td>");
 				out.println("</tr>");
 			}

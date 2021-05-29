@@ -7,7 +7,7 @@
 	HttpSession loginSession=request.getSession();
 	if(loginSession.getAttribute("login")==null){
 		loginSession.setAttribute("login", false);
-		response.sendRedirect("/RankWallet/welcome.jsp");
+		response.sendRedirect("/RankWallet/index.jsp");
 	}
 	else{
 		boolean status = (boolean)loginSession.getAttribute("login");
