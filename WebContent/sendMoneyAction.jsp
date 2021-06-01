@@ -25,8 +25,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/RankWallet/style.css">
 </head>
 <body>
+<div class = "signup-status">
 <%
 	String sendPhone=request.getParameter("sendphone").toString();
 	String amount=request.getParameter("amount").toString();
@@ -36,10 +38,15 @@
 	else{
 		if(Customer.sendBalance(phone, amount)){
 			Customer.addBalance(sendPhone, amount);
+			out.println("<h3>");
 			out.println("Transaction Successful!!");
+			out.println("</h3>");
+			
 		}
 	}
 %>
 <button onclick="window.location.href='welcome.jsp'">Go Back</button>
+</div>
+
 </body>
 </html>
