@@ -59,11 +59,11 @@
 		
 		<div class = "firstinput">
 			<input class="signup-input1" required type="text" name="name" placeholder="First Name">
-			<input class="signup-input1" required type="text" name="name" placeholder="Last Name">
+			<input class="signup-input1" required type="text" name="lname" placeholder="Last Name">
 		</div>
 		
 			<input class="signup-input" required type="text" name="phone" placeholder="Phone No." pattern="[0-9]{10}">
-			<input class="signup-input" required type="date" name="dob" placeholder="Date Of Birth">
+			<input class="signup-input" required type="date" name="dob" placeholder="Date Of Birth" >
 			<input class="signup-input" required type="password" name="password" placeholder="Password">
 		
 			<input class="signup-button" type="submit" value="Sign Up">
@@ -78,7 +78,7 @@
 	
 	</div>
 	
-	</div>
+
 	
 </body>
 </html>
