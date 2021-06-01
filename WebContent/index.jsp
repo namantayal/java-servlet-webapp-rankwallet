@@ -19,7 +19,7 @@
 <head>
 <meta charset="ISO-8859-1">
 	<title>Rank Wallet</title>
-	<link rel="stylesheet" type="text/css" href="/RankWallet/style.css?version=50">
+	<link rel="stylesheet" type="text/css" href="/RankWallet/style.css?version=80">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	
 </head>
