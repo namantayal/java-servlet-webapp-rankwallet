@@ -5,6 +5,7 @@ body{
 	flex-direction:'row';
 	width:100%;
 	height:100%;
+	border: solid blue 2px;
 }
 .image{
 	display:flex;
@@ -242,6 +243,33 @@ img{
   	color:white;
 }
 
+.send-status{
+	width:40%;
+	height:40%;
+	padding:20px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20%;
+	border: 2px solid green;
+  	border-radius: 5px;
+}
+
+.send-status>h3{
+	color:black;
+	text-align: center;
+  	font-family: Arial, Helvetica, sans-serif;
+}
+.send-status>button{
+	display:block;
+	height:5vh;
+	width:10%;
+  	margin-top:25px;
+  	margin-left: auto;
+  	margin-right: auto;
+  	background-color:#019031;
+  	color:white;
+}
+
 .login-status{
 	width:40%;
 	height:40%;
@@ -269,6 +297,8 @@ img{
   	background-color:#E71C23;
   	color:white;
 }
+
+
 
 .logout-form{
 	width: 15%;

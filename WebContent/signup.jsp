@@ -12,11 +12,12 @@
 	<div class="signup-status">
 		<h3><%
 			String name=request.getParameter("name").toString();
+			String lname=request.getParameter("lname").toString();
 			String phone=request.getParameter("phone").toString();
 			String dob=request.getParameter("dob").toString();
 			String pass=request.getParameter("password").toString();
-			if(Customer.register(name, phone, dob, pass)){
-			out.println("Registaration Successful!!");
+			if(Customer.register(name,lname, phone, dob, pass)){
+				out.println("Registaration Successful!!");
 			}
 			else{
 				out.println("User Already Exists!!");

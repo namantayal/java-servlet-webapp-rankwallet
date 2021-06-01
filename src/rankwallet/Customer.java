@@ -1,16 +1,19 @@
 package rankwallet;
-
+import java.util.UUID;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Customer {
-	public static boolean register(String name, String phone, String dob, String pass) {
+	public static boolean register(String name,String lname, String phone, String dob, String pass) {
 		try{
+			
 			Class.forName("com.mysql.cj.jdbc.Driver");  
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","root");  
             Statement st= con.createStatement();
             st.execute("CREATE DATABASE IF NOT EXISTS rankwallet");
             st.execute("USE rankwallet");
-            st.execute("CREATE TABLE IF NOT EXISTS customer(Phone varchar(11) PRIMARY KEY,Name varchar(20),Dob varchar(15),Pass varchar(40),Bal Int)");
+            st.execute("CREATE TABLE IF NOT EXISTS customer(Phone varchar(11) PRIMARY KEY,Name varchar(20),LName varchar(20),Dob varchar(15),Pass varchar(70),Bal Int)");
             String query=String.format("Select *  FROM customer WHERE phone='%s'", phone);
             ResultSet rs=st.executeQuery(query);
             if(rs.next()) {
@@ -19,7 +22,8 @@ public class Customer {
             	return false;
             }
             else {
-            	query=String.format("Insert INTO customer(Phone,Name,Dob,Pass,Bal) VALUES('%s','%s','%s','%s',0)", phone,name,dob,Encrypt.getMd5(pass));
+            	query=String.format("Insert INTO customer(Phone,Name,LName,Dob,Pass,Bal) VALUES('%s','%s','%s','%s','%s',0)", phone,name,lname,dob,Encrypt.getSHA(pass));
+            	System.out.println(Encrypt.getSHA(pass));
             	st.executeUpdate(query);
             	st.close();
             	con.close();
@@ -47,7 +51,7 @@ public class Customer {
             }
             else {
             	String storedPass=rs.getString("Pass");
-            	if(storedPass.equalsIgnoreCase(Encrypt.getMd5(pass))) {
+            	if(storedPass.equalsIgnoreCase(Encrypt.getSHA(pass))) {
             		st.close();
                 	con.close();
             		return true;
@@ -85,6 +89,21 @@ public class Customer {
 			return null;
 		}
 		
+	}
+	public static ResultSet details(String phone) {
+		try{
+			Class.forName("com.mysql.cj.jdbc.Driver");  
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","root");  
+            Statement st= con.createStatement();
+            st.execute("USE rankwallet");
+            String query=String.format("Select Phone,Name,LName,Dob,Bal FROM customer WHERE Phone='%s'", phone);
+            ResultSet rs=st.executeQuery(query);
+            return rs;
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
 	}
 	public static void delete(String phone) {
 		try{
@@ -124,17 +143,20 @@ public class Customer {
 		}
 	}
 	
-	public static void addBalance(String phone,String amount) {
+	public static void addBalance(String phone,String amount,UUID uuid, String sendphone) {
 		try{
+			LocalDateTime myDateObj = LocalDateTime.now();
+		    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		    String formattedDate = myDateObj.format(myFormatObj);
 			Class.forName("com.mysql.cj.jdbc.Driver");  
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","root");  
             Statement st= con.createStatement();
             st.execute("USE rankwallet");
-            String query=String.format("CREATE TABLE IF NOT EXISTS c%s(Id INT PRIMARY KEY AUTO_INCREMENT,Mode varchar(20),Amount INT)",phone);
+            String query=String.format("CREATE TABLE IF NOT EXISTS transactions(Id INT PRIMARY KEY AUTO_INCREMENT,Phone varchar(10),T_ID varchar(40) ,Mode varchar(20),sendphone varchar(20),Amount INT,time varchar(30))");
             st.execute(query);
             query=String.format("Update customer SET Bal= bal + %s WHERE Phone='%s'",amount,phone);
             st.executeUpdate(query);
-            query=String.format("Insert INTO c%s(Mode,Amount) VALUES('%s','%s')",phone,"Add",amount);
+            query=String.format("Insert INTO transactions(Phone,T_ID,Mode,sendphone,Amount,time) VALUES('%s','%s','%s','%s','%s','%s')",phone,uuid,"Added from",sendphone,amount,formattedDate);
             st.executeUpdate(query);
             st.close();
         	con.close();
@@ -144,8 +166,11 @@ public class Customer {
 		}
 	}
 	
-	public static boolean sendBalance(String phone,String amount) {
+	public static boolean sendBalance(String phone,String amount,UUID uuid, String sendphone) {
 		try{
+			LocalDateTime myDateObj = LocalDateTime.now();
+		    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		    String formattedDate = myDateObj.format(myFormatObj);
 			Class.forName("com.mysql.cj.jdbc.Driver");  
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","root");  
             Statement st= con.createStatement();
@@ -158,11 +183,11 @@ public class Customer {
             	return false;
             }
             else {
-            	query=String.format("CREATE TABLE IF NOT EXISTS c%s(Id INT PRIMARY KEY AUTO_INCREMENT,Mode varchar(20),Amount INT)",phone);
-            	st.execute(query);
+            	String query1=String.format("CREATE TABLE IF NOT EXISTS transactions(Id INT PRIMARY KEY AUTO_INCREMENT,Phone varchar(10),T_ID varchar(40) ,Mode varchar(20),sendphone varchar(20),Amount INT,time varchar(30))");
+                st.execute(query1);
             	query=String.format("Update customer SET Bal= bal - %s WHERE Phone='%s'",amount,phone);
             	st.executeUpdate(query);
-            	query=String.format("Insert INTO c%s(Mode,Amount) VALUES('%s','%s')",phone,"Send",amount);
+            	query=String.format("Insert INTO transactions(Phone,T_ID,Mode,sendphone,Amount,time) VALUES('%s','%s','%s','%s','%s','%s')",phone,uuid,"Sent to",sendphone,amount,formattedDate);
             	st.executeUpdate(query);
             }
             st.close();
@@ -181,7 +206,7 @@ public class Customer {
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","root");  
             Statement st= con.createStatement();
             st.execute("USE rankwallet");
-            String query=String.format("Select *  FROM c%s", phone);
+            String query=String.format("Select *  FROM transactions WHERE Phone='%s'", phone);
             ResultSet rs=st.executeQuery(query);
             return rs;
 		}
