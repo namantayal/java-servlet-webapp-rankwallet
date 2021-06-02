@@ -2,6 +2,7 @@
 <%@page import="rankwallet.Customer"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="rankwallet.Customer"%>
 <%!
 	String phone=null;
 %>	
@@ -14,7 +15,7 @@
 	else{
 		boolean status = (boolean)loginSession.getAttribute("login");
 		if(!status){
-			response.sendRedirect("/RankWallet/welcome.jsp");
+			response.sendRedirect("/RankWallet/index.jsp");
 		}
 		else{
 			phone=loginSession.getAttribute("phone").toString();
@@ -27,7 +28,7 @@
 <head>
 <meta charset="ISO-8859-1">
 	<title>Transactions</title>
-	<link rel="stylesheet" type="text/css" href="/RankWallet/transaction.css?version=80">
+	<link rel="stylesheet" type="text/css" href="/RankWallet/transaction.css?version=90">
 	
 	<style>
 body {
@@ -46,7 +47,7 @@ body {
 		<button class="text" onclick="window.location.href='addMoney.jsp'">Add Money</button>
 		<button class="text" onclick="window.location.href='sendMoney.jsp'">Send Money</button>
 		<button class="button" onclick="window.location.href='transactions.jsp'">Statement</button>
-		<button class="text" onclick="window.location.href='delete.jsp'">Delete</button>
+		<button class="text" onclick="window.location.href='profile.jsp'">Profile</button>
 		</div>
 		<form action="logout.jsp" method="post" class="logOut" >
 			<input class="logbut" type="submit" value="Logout">
@@ -72,10 +73,12 @@ body {
 		
 		<%
 		ResultSet rs= Customer.transaction(phone);
+		int i=0;
 			while(rs!=null && rs.next()){
+				i++;
 				out.println("<tr>");
 				out.println("<td>");
-				out.println(rs.getString("Id"));
+				out.println(i);
 				out.println("</td>");
 				out.println("<td>");
 				out.println(rs.getString("Phone"));
@@ -102,5 +105,11 @@ body {
 		%>
 	</table>
 </div>
+</div>
+
+<div class="bottomBar">
+<p class="headText">Current Balance:
+  <% out.println(Customer.getInfo(phone,"Bal")); %>
+</p>
 </div>
 </html>

@@ -15,7 +15,7 @@
 	else{
 		boolean status = (boolean)loginSession.getAttribute("login");
 		if(!status){
-			response.sendRedirect("/RankWallet/welcome.jsp");
+			response.sendRedirect("/RankWallet/index.jsp");
 		}
 		else{
 			phone=loginSession.getAttribute("phone").toString();
@@ -39,18 +39,10 @@
 		out.println("Destination Wallet Not Exists!!");
 	}
 	else{
-<<<<<<< HEAD
-		if(Customer.sendBalance(phone, amount)){
-			Customer.addBalance(sendPhone, amount);
-			out.println("<h3>");
-=======
 		
 		if(Customer.sendBalance(phone, amount,uuid,sendPhone)){
 			Customer.addBalance(sendPhone, amount, uuid, phone);
->>>>>>> 95dff997e567b256be726c4e70cb37cbe9ecb5fb
-			out.println("Transaction Successful!!");
-			out.println("</h3>");
-			
+			out.println("Transaction Successful!!");		
 		}
 	}
 %>
