@@ -25,7 +25,7 @@
 <head>
 <meta charset="ISO-8859-1">
 	<title>Add Money</title>
-	<link rel="stylesheet" type="text/css" href="/RankWallet/addmoney.css?version=40">
+	<link rel="stylesheet" type="text/css" href="/RankWallet/addmoney.css?version=60">
 	
 	<style>
 body {

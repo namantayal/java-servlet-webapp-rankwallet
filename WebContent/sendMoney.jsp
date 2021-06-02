@@ -26,7 +26,7 @@
 <head>
 <meta charset="ISO-8859-1">
 	<title>Send Money</title>
-	<link rel="stylesheet" type="text/css" href="/RankWallet/sendmoney.css?version=40">
+	<link rel="stylesheet" type="text/css" href="/RankWallet/sendmoney.css?version=60">
 </head>
 <body>
 	<div class = "navBar">

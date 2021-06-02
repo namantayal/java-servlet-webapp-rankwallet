@@ -4,12 +4,12 @@
     pageEncoding="ISO-8859-1"%>
 <%!
 	String phone=null;
-%>
+%>	
 <%
 	HttpSession loginSession=request.getSession();
 	if(loginSession.getAttribute("login")==null){
 		loginSession.setAttribute("login", false);
-		response.sendRedirect("/RankWallet/welcome.jsp");
+		response.sendRedirect("/RankWallet/index.jsp");
 	}
 	else{
 		boolean status = (boolean)loginSession.getAttribute("login");
@@ -27,41 +27,80 @@
 <head>
 <meta charset="ISO-8859-1">
 	<title>Transactions</title>
-	<link rel="stylesheet" type="text/css" href="/RankWallet/style.css?version=15">
+	<link rel="stylesheet" type="text/css" href="/RankWallet/transaction.css?version=80">
+	
+	<style>
+body {
+  background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGF5bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
 </head>
 <body>
-	<nav class="nav-bar">
-		<h2 class="title">Rank Wallet</h2>
-		<form action="logout.jsp" method="post" class="logout-form">
-			<input class="logout-button" type="submit" value="Logout">
+	<div class = "navBar">
+
+		<h2 class="Heading">Rank Wallet</h2>
+		<div class="buttonsDiv">
+		<button class="text" onclick="window.location.href='addMoney.jsp'">Add Money</button>
+		<button class="text" onclick="window.location.href='sendMoney.jsp'">Send Money</button>
+		<button class="button" onclick="window.location.href='transactions.jsp'">Statement</button>
+		<button class="text" onclick="window.location.href='delete.jsp'">Delete</button>
+		</div>
+		<form action="logout.jsp" method="post" class="logOut" >
+			<input class="logbut" type="submit" value="Logout">
 		</form>
-	</nav>
+	
+</div>
 </body>
-<h3 class="func-title">Transactions</h3>
-<div>
+
+<h3 class="func-title"><u>Transactions</u></h3>
+
+<div class = "container">
+<div class = "formContainer">
 	<table>
 		<tr>
 			<th>S.No.</th>
+			<th>Phone</th>
+			<th>Transaction ID</th>
 			<th>Mode</th>
+			<th>Received from/ Sent to</th>
 			<th>Amount</th>
+			<th>Transaction Time</th>
 		</tr>
+		
 		<%
-			ResultSet rs= Customer.transaction(phone);
-			while(rs.next()){
+		ResultSet rs= Customer.transaction(phone);
+			while(rs!=null && rs.next()){
 				out.println("<tr>");
 				out.println("<td>");
 				out.println(rs.getString("Id"));
 				out.println("</td>");
 				out.println("<td>");
+				out.println(rs.getString("Phone"));
+				out.println("</td>");
+				out.println("<td>");
+				out.println(rs.getString("T_ID"));
+				out.println("</td>");
+				out.println("<td>");
 				out.println(rs.getString("Mode"));
+				out.println("</td>");
+				out.println("<td>");
+				out.println(rs.getString("sendphone"));
 				out.println("</td>");
 				out.println("<td>");
 				out.println(rs.getString("Amount"));
 				out.println("</td>");
+				out.println("<td>");
+				out.println(rs.getString("time"));
+				out.println("</td>");
 				out.println("</tr>");
 			}
 			
+			
 		%>
 	</table>
+</div>
 </div>
 </html>

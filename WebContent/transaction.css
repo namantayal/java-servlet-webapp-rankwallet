@@ -27,6 +27,7 @@ body {
   padding: 0px 5px;
 }
 
+
 .button {
   display: flex;
   align-items: center;
@@ -52,6 +53,7 @@ body {
   border: solid 0px;
   outline: none;
 }
+
 .logOut {
   display: flex;
   margin-left: auto;
@@ -74,10 +76,21 @@ body {
   color: #3C40C6;
 }
 
+.func-title{
+	margin-top:45px;
+	text-align:center;
+	font-size:34px;
+	font-weight:600;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
 .container {
   display: flex;
+  align-items: center;
+  justify-content:center;
   flex-direction: row;
-  width: 90%;
+  width: 95%;
   padding: 10px 50px;
   margin-top: 10px;
 }
@@ -85,79 +98,65 @@ body {
 .formContainer {
   display: flex;
   flex-direction: column;
-  width: 700px;
-  height: 450px;
-  margin-left: auto;
+  width: 1100px;
+  height: 600px;
   background-color: white;
   align-items: center;
-  margin-top: 120px;
   padding: 20px 15px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 7px 0 rgba(0, 0, 0, 0.19);
   border-radius: 8px;
 }
-.addMoney {
-  display: flex;
-  margin: 0px;
-  font-size: 40px;
-  color: #3bb9ff;
-  font-weight: bold;
+
+
+
+table{
+	margin: 30px auto;
+	width: 40%; 
+	font-family: sans-serif;
+	font-size: 15px;
 }
 
-.line {
-  display: flex;
-  width: 90%;
-  border: solid 1px #dcdcdc;
-  margin-bottom: 5px;
-  margin-top: 30px;
+th{
+	height: 40px;
+	text-align:center;
+	color:#ffffff;
+	padding-left: 40px;
+	padding-right:40px;
+	border:1px solid;
+	border-bottom: 2px solid;
+	border-color: #3bb9ff;
+	background-image: linear-gradient(to bottom,#3bb9ff,#4169E1)
+}
+th:first-child{
+	border-top-left-radius: 5px;
+}
+th:last-child{
+	border-top-right-radius: 5px;
 }
 
-.headText {
-  display: flex;
-  font-size: 24px;
-  color: black;
-  margin: 0px;
-  margin-bottom: 10px;
+tr{
+	opacity: 0.8;
 }
 
-.inputBox {
-  display: flex;
-  flex-direction: row;
-  padding: 25px 15px;
-  width: 80%;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  margin-top: 20px;
-  border: solid 1px #d3d3d3;
+tr:first-child{
+	opacity: 1;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  padding: 0px 10px;
-  margin-top: 40px;
+tr:hover{
+	opacity: 1;
 }
 
-.lines {
-  display: flex;
-  width: 100%;
-  border: solid 1px #dcdcdc;
-  margin-bottom: 5px;
-  margin-top: 50px;
+td{
+	height: 34px;
+	padding: 4px;
+	border:2px solid;
+	border-color: #ADD8E6;
+	color: #000000;
+	background-color: #ADD8E6;
+	text-align: center;
+	
 }
-
-.addButton {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  background-color: #008000;
-  color: white;
-  font-size: 20px;
-  margin-top: 40px;
-  margin-left: 160px;
-  border-radius: 10px;
-  border: solid 0px;
-  padding: 20px 10px;
+td:first-child{
+	text-align: left;
+	padding-left: 10px;
 }

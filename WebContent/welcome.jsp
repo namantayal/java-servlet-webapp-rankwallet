@@ -26,7 +26,7 @@
 <head>
 <meta charset="ISO-8859-1">
 	<title>Rank Wallet</title>
-	<link rel="stylesheet" type="text/css" href="/RankWallet/welcome.css?version=60">
+	<link rel="stylesheet" type="text/css" href="/RankWallet/welcome.css?version=80">
 </head>
 <body>
 <div class = "navBar">
